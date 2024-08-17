@@ -43,7 +43,8 @@ function App() {
         const { data } = await axios.get(url);
         setWeather(data);
     };
-    const iconUrl = `src/assets/current.png`;
+
+    const iconUrl = `/assets/current.png`;
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-200">
@@ -57,15 +58,13 @@ function App() {
 
                     <div
                         className="relative flex justify-center w-3/4"
-                        onBlur={() => setDropdownOpen(false)}
-                        onFocus={() => setDropdownOpen(true)}
                         tabIndex="0"
                     >
                         <button
                             onClick={toggleDropdown}
                             className="px-4 py-2 bg-blue-300 bg-opacity-30 text-white font-semibold rounded-lg w-full text-center hover:bg-blue-400 focus:outline-none"
                         >
-                            {city || 'Select a city'}
+                            {city || 'Select a City'}
                         </button>
 
                         {dropdownOpen && (
