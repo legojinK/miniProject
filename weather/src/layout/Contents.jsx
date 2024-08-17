@@ -1,10 +1,12 @@
 import React from 'react';
 
+
 const Contents = ({ weather }) => {
     if (!weather) {
         return <div className="text-center mt-4">Loading...</div>;
     }
-    const iconUrl = `src/assets/day/${weather.weather[0].icon}.png`;
+    const icon = weather?.weather?.[0]?.icon;
+    const iconUrl = (`/assets/day/${icon}.png`);
 
     return (
         <div className="text-center">

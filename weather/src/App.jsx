@@ -49,38 +49,40 @@ function App() {
         <div className="min-h-screen flex items-center justify-center bg-gray-200">
             <div className="bg-blue-100 bg-opacity-80 p-10 rounded-2xl shadow-lg text-gray-800 w-full max-w-lg relative">
                 <Header weather={weather} />
-                <div
-                    className="relative mt-6 flex justify-center"
-                    onBlur={() => setDropdownOpen(false)}
-                    onFocus={() => setDropdownOpen(true)}
-                    tabIndex="0"
-                >
-                    <button className="bg-blue-100  mb-4  rounded-lg">
+
+                <div className="mt-6 flex justify-center relative items-center">
+                    <button className="bg-blue-100 rounded-lg absolute right-0">
                         <img src={iconUrl} alt='current' className="w-12 h-12" />
                     </button>
 
-                    <button
-                        onClick={toggleDropdown}
-                        className="px-4 py-2 mb-3 bg-blue-300 bg-opacity-30 text-white font-semibold rounded-lg w-3/4 text-center hover:bg-blue-400 focus:outline-none"
+                    <div
+                        className="relative flex justify-center w-3/4"
+                        onBlur={() => setDropdownOpen(false)}
+                        onFocus={() => setDropdownOpen(true)}
+                        tabIndex="0"
                     >
-                        {city || 'Select a city'}
-                    </button>
+                        <button
+                            onClick={toggleDropdown}
+                            className="px-4 py-2 bg-blue-300 bg-opacity-30 text-white font-semibold rounded-lg w-full text-center hover:bg-blue-400 focus:outline-none"
+                        >
+                            {city || 'Select a city'}
+                        </button>
 
-                    {dropdownOpen && (
-                        <ul className="absolute top-full mt-1 bg-white rounded-lg border border-gray-300 text-black z-10 max-h-32 overflow-auto w-3/4 transform -translate-x-1/2 left-1/2">
-                            {cities.map((city) => (
-                                <li
-                                    key={city}
-                                    onClick={() => handleCitySelect(city)}
-                                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                                >
-                                    {city}
-                                </li>
-                            ))}
-                        </ul>
-                    )}
+                        {dropdownOpen && (
+                            <ul className="absolute top-full bg-white rounded-lg border border-gray-300 text-black z-5 max-h-32 overflow-auto w-full">
+                                {cities.map((city) => (
+                                    <li
+                                        key={city}
+                                        onClick={() => handleCitySelect(city)}
+                                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                                    >
+                                        {city}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
                 </div>
-
 
                 <Contents weather={weather} />
             </div>
