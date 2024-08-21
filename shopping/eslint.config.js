@@ -11,6 +11,11 @@ export default [
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+      overrideConfig: {
+        linterOptions: {
+          reportUnusedDisableDirectives: true,
+        },
+      },
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },

@@ -5,7 +5,8 @@
       "@/*": ["src/*"],
       "@apis/*": ["src/apis/*"],
       "@assets/*": ["src/assets/*"],
-      "@layout/*": ["src/layout/*"]
+      "@layout/*": ["src/layout/*"],
+      "@component/*": ["src/component/*"]
     }
   },
   "include": ["src"]

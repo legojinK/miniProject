@@ -1,9 +1,9 @@
 import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser} from "@fortawesome/free-regular-svg-icons";
-import logoImg from "@/assets/logo.png";
 import {Button, IconButton, Input, InputGroup, InputRightElement} from '@chakra-ui/react'
 import {SearchIcon} from "@chakra-ui/icons";
+import {useNavigate} from "react-router";
 
 
 const Navbar = () => {
@@ -18,9 +18,17 @@ const Navbar = () => {
         "지속가능성",
     ];
     const [show, setShow] = React.useState(false)
+    const navigate =useNavigate()
+
+    const goToLogin=()=>{
+        navigate("/login");
+    }
+    const logoImg = (`/assets/logo.png`);
+
+
     return (
         <div>
-            <div className="login-button">
+            <div className="login-button" onClick={goToLogin}>
                 <FontAwesomeIcon icon={faUser} />
                 <div> 로그인 </div>
             </div>

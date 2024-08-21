@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import React,{ useState } from 'react'
 import './App.css'
 import {Route, Routes} from "react-router";
 import ProductList from "./page/ProductList.jsx";
 import Login from "./page/Login.jsx";
 import PrivateRoute from "./route/PrivateRoute.jsx";
 import Navbar from "./component/Navbar.jsx";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
