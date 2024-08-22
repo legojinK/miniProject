@@ -14,7 +14,6 @@ const ProductList = () => {
     const getProductList = async()=>{
         const url = `http://localhost:4000/products`;
         const { data } = await axios.get(url);
-        console.log(111,data)
         setProductList(data)
     }
 
@@ -25,7 +24,7 @@ const ProductList = () => {
                 <Row>
                     {productList.map((item) => (
                         <Col lg={3} key={item.id}>
-                            <Card items={item}/>
+                            <Card item={item}/>
                         </Col>
                     ))}
                 </Row>
