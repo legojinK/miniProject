@@ -1,12 +1,17 @@
 .login-button{
     display:flex;
     justify-content: flex-end;
-    margin:20px;
     cursor: pointer;
+    padding:20px;
+}
+.login-icon{
+    margin-right:13px;
+    margin-top:3px
 }
 .nav-logo{
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 
 .nav-menu{

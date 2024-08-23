@@ -25,9 +25,8 @@ function App() {
 */
 
   return (
-
     <>
-        <Navbar/>
+        <Navbar auth={auth} setAuth={setAuth}/>
           <Routes>
             <Route path="/" element={<ProductList />} />
             <Route path="/login" element={<Login setAuth={setAuth}/>} />

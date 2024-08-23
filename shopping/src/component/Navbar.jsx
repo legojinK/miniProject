@@ -6,7 +6,7 @@ import {SearchIcon} from "@chakra-ui/icons";
 import {useNavigate} from "react-router";
 
 
-const Navbar = () => {
+const Navbar = ({setAuth,auth}) => {
     const menuList = [
         "여성",
         "Divided",
@@ -23,17 +23,40 @@ const Navbar = () => {
     const goToLogin=()=>{
         navigate("/login");
     }
+    const goToMain=()=>{
+        navigate("/");
+    }
     const logoImg = (`/assets/logo.png`);
+    const search=(e)=>{
+        if(e.key==="Enter"){
+            const keywords=e.target.value
+            navigate(`/?q=${keywords}`)
+            console.log("Enter")
+        }
+    }
+    const logout = ()=>{
+        setAuth(false);
+        navigate("/");
+    }
+
+
 
 
     return (
         <div>
-            <div className="login-button" onClick={goToLogin}>
-                <FontAwesomeIcon icon={faUser} />
-                <div> 로그인 </div>
-            </div>
+            { auth ?
+                <div className="login-button" onClick={logout}>
+                    <FontAwesomeIcon icon={faUser} className="login-icon"  />
+                    <div> 로그아웃 </div>
+                </div>
+                :
+                <div className="login-button" onClick={goToLogin}>
+                    <FontAwesomeIcon icon={faUser} className="login-icon" />
+                    <div> 로그인 </div>
+                </div>
+            }
             <div className="nav-logo">
-                <img src={logoImg} alt='logo' width={100}/>
+                <img src={logoImg} alt='logo' width={100} onClick={goToMain}/>
             </div>
             <div>
                 <div className="nav-menu">
@@ -47,17 +70,18 @@ const Navbar = () => {
                     <div className="nav-search">
                         <InputGroup>
                             <Input
-                                htmlSize={20}
                                 width='auto'
                                 type="text"
                                 variant='outline'
                                 placeholder="검색"
                                 focusBorderColor='gray.200'
+                                onKeyDown={(e)=>search(e)}
                             />
                             <InputRightElement>
                                 <IconButton
                                     aria-label='Search database'
-                                    icon={<SearchIcon />}
+                                    icon={<SearchIcon color='#a8a29e'/>}
+                                    color='#f5f5f4'
                                 />
                             </InputRightElement>
                         </InputGroup>

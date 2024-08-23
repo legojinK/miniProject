@@ -11,7 +11,7 @@ const Card = ({ item }) => {
     };
 
     return (
-        <div className="h-full">
+        <div className="h-full mt-4">
             <motion.div
                 className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer flex flex-col justify-between h-full"
                 whileHover={{ scale: 1.05 }}
