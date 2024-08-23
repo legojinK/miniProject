@@ -4,7 +4,7 @@
       "id":0,
       "img":"https://www.jennikayne.com/cdn/shop/files/leather-loren-tote-saddle-1_1024x.jpg?v=1721947742",
       "title":"Loren Tote",
-      "price":99,900,
+      "price":99900,
       "choice":true,
       "new":true,
       "size":["S","M","L"]
@@ -134,7 +134,6 @@
       "id":13,
       "img":"https://noona-hnm.netlify.app/sweat-shirt.jpeg",
       "title":"스웨트셔츠",
-      "price":29900,
       "price":29900,
       "choice":false,
       "new":false,
