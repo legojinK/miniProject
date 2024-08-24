@@ -1,12 +1,12 @@
 .login-button{
-    display:flex;
+    display: flex;
     justify-content: flex-end;
     cursor: pointer;
-    padding:20px;
+    padding: 20px;
 }
 .login-icon{
-    margin-right:13px;
-    margin-top:3px
+    margin-right: 13px;
+    margin-top: 3px;
 }
 .nav-logo{
     display: flex;
@@ -14,13 +14,18 @@
     cursor: pointer;
 }
 
-.nav-menu{
+.nav-menu {
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
 }
 
 .nav-menu-list{
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .nav-menu-list li{
     margin: 10px;
@@ -33,7 +38,45 @@
     margin-left: 20px;
 }
 .nav-search input{
-    margin-left:5px;
+    margin-left: 5px;
 }
 
+.desktop-menu {
+    display: flex;
+}
 
+.mobile-menu-button {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .desktop-menu {
+        display: none;
+    }
+    .mobile-menu-button {
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+
+    .nav-menu-list {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .nav-menu-list ul {
+        width: 100%;
+    }
+
+    .nav-menu-list li {
+        width: 100%;
+        padding: 15px 20px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .nav-menu-list li:last-child {
+        border-bottom: none;
+    }
+}

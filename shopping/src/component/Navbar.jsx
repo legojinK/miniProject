@@ -1,12 +1,26 @@
 import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser} from "@fortawesome/free-regular-svg-icons";
-import {Button, IconButton, Input, InputGroup, InputRightElement} from '@chakra-ui/react'
-import {SearchIcon} from "@chakra-ui/icons";
+import {
+    Button,
+    IconButton,
+    Input,
+    InputGroup,
+    InputRightElement,
+    Drawer,
+    DrawerBody,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerOverlay,
+    DrawerContent,
+    DrawerCloseButton,
+    useDisclosure
+} from '@chakra-ui/react'
+import {SearchIcon, HamburgerIcon} from "@chakra-ui/icons";
 import {useNavigate} from "react-router";
 
 
-const Navbar = ({setAuth,auth}) => {
+const Navbar = ({setAuth, auth}) => {
     const menuList = [
         "여성",
         "Divided",
@@ -17,51 +31,47 @@ const Navbar = ({setAuth,auth}) => {
         "Sale",
         "지속가능성",
     ];
-    const [show, setShow] = React.useState(false)
-    const navigate =useNavigate()
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const navigate = useNavigate();
 
-    const goToLogin=()=>{
+    const goToLogin = () => {
         navigate("/login");
     }
-    const goToMain=()=>{
+    const goToMain = () => {
         navigate("/");
     }
     const logoImg = (`/assets/logo.png`);
-    const search=(e)=>{
-        if(e.key==="Enter"){
-            const keywords=e.target.value
-            navigate(`/?q=${keywords}`)
-            console.log("Enter")
+    const search = (e) => {
+        if (e.key === "Enter") {
+            const keywords = e.target.value;
+            navigate(`/?q=${keywords}`);
         }
     }
-    const logout = ()=>{
+    const logout = () => {
         setAuth(false);
         navigate("/");
     }
 
-
-
-
     return (
         <div>
-            { auth ?
+            {auth ?
                 <div className="login-button" onClick={logout}>
-                    <FontAwesomeIcon icon={faUser} className="login-icon"  />
+                    <FontAwesomeIcon icon={faUser} className="login-icon"/>
                     <div> 로그아웃 </div>
                 </div>
                 :
                 <div className="login-button" onClick={goToLogin}>
-                    <FontAwesomeIcon icon={faUser} className="login-icon" />
+                    <FontAwesomeIcon icon={faUser} className="login-icon"/>
                     <div> 로그인 </div>
                 </div>
             }
             <div className="nav-logo">
                 <img src={logoImg} alt='logo' width={100} onClick={goToMain}/>
             </div>
-            <div>
+            <div className="desktop-menu">
                 <div className="nav-menu">
                     <div className="nav-menu-list">
-                        {menuList.map((menu,index)=>(
+                        {menuList.map((menu, index) => (
                             <ul key={index}>
                                 <li>{menu}</li>
                             </ul>
@@ -75,7 +85,7 @@ const Navbar = ({setAuth,auth}) => {
                                 variant='outline'
                                 placeholder="검색"
                                 focusBorderColor='gray.200'
-                                onKeyDown={(e)=>search(e)}
+                                onKeyDown={(e) => search(e)}
                             />
                             <InputRightElement>
                                 <IconButton
@@ -88,6 +98,34 @@ const Navbar = ({setAuth,auth}) => {
                     </div>
                 </div>
             </div>
+            <div className="mobile-menu-button">
+                <IconButton
+                    icon={<HamburgerIcon />}
+                    aria-label="Open Menu"
+                    onClick={onOpen}
+                    variant="outline"
+                />
+            </div>
+            <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
+                <DrawerOverlay>
+                    <DrawerContent>
+                        <DrawerCloseButton />
+                        <DrawerHeader>Menu</DrawerHeader>
+                        <DrawerBody>
+                            <div className="nav-menu-list">
+                                {menuList.map((menu, index) => (
+                                    <ul key={index}>
+                                        <li>{menu}</li>
+                                    </ul>
+                                ))}
+                            </div>
+                        </DrawerBody>
+                        <DrawerFooter>
+                            <Button variant="outline" onClick={onClose}>Close</Button>
+                        </DrawerFooter>
+                    </DrawerContent>
+                </DrawerOverlay>
+            </Drawer>
         </div>
     );
 };
