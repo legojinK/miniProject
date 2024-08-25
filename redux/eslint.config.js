@@ -7,7 +7,8 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 export default [
   { ignores: ['dist'] },
   {
-    files: ['**/*.{js,jsx}'],
+    // Update the files pattern to include all relevant extensions
+    files: ['**/*.{js,ts,jsx,tsx,html,vue}'],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
@@ -33,6 +34,11 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+    },
+    overrideConfig: {
+      linterOptions: {
+        reportUnusedDisableDirectives: true,
+      },
     },
   },
 ]
