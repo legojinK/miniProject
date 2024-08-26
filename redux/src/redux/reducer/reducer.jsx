@@ -1,21 +1,25 @@
 
 const initialState ={
-    count:0,
-    id:'',
-    password:''
+    contactList:[],
+    search:'',
 }
 
 
 function reducer(state=initialState,action) {
 
+    const {type,payload} = action
 
-    switch (action.type) {
-        case 'Increase':
-            return {...state, count: state.count + 1 }
-        case 'Decrease':
-            return {...state, count: state.count - 1 }
-        case 'Login':
-            return {...state, id:action.payload.id, password:action.payload.password }
+    switch (type) {
+        case 'add_contact':
+            return {
+                ...state,
+                contactList: [...state.contactList, { name: payload.name, phone: payload.phone,photo:payload.photo }]
+            }
+        case 'search':
+            return {
+                ...state,
+                search: payload
+            };
         default:
             return{ ...state}
     }
