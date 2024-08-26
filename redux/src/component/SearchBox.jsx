@@ -7,7 +7,7 @@ const SearchBox = () => {
     const search = (e) => {
         if (e.key === "Enter") {
             const keywords = e.target.value;
-            dispatch({ type: 'search', payload: search });
+            dispatch({ type: 'search', payload: keywords });
         }
     }
     return (

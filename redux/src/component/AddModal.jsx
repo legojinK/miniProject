@@ -6,8 +6,8 @@ import {useDispatch} from "react-redux";
 const AddModal = () => {
     const [isPopupOpen,setIsPopupOpen] =useState(false)
     const [newContact,setNewContact] = useState({name:'',phone:'',photo:null})
-    //const [name,setName] =useState('')
     const dispatch =useDispatch()
+    const defaultPhoto = "https://i.pinimg.com/236x/2f/55/97/2f559707c3b04a1964b37856f00ad608.jpg";
     const handleOpenPopup = () => {
         setIsPopupOpen(true)
     }
@@ -17,8 +17,10 @@ const AddModal = () => {
     }
     const handleSubmit=(e)=>{
         e.preventDefault();
-        dispatch({type:"add_contact", payload:{name:newContact.name, phone:newContact.phone, photo:newContact.photo}})
+        dispatch({type:"add_contact", payload:{name:newContact.name, phone:newContact.phone, photo:newContact.photo|| defaultPhoto}})
         setIsPopupOpen(false)
+        setNewContact({ name: '', phone: '', photo: null });
+
     }
     const handlePhotoUpload = (e) => {
         const file = e.target.files[0];
