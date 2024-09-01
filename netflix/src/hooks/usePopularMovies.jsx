@@ -1,0 +1,14 @@
+import {useQuery} from "@tanstack/react-query";
+import api from "../utils/api.jsx"
+
+
+const fetchPopularMovies=()=>{
+    return api.get(`/movie/popular`)
+}
+export const usePopularMoviesQuery = (query) => {
+    return useQuery({
+        queryKey:['movie-popular'],
+        queryFn:fetchPopularMovies,
+        select:(result)=>result.data,
+    })
+}
