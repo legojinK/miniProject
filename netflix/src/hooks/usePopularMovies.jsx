@@ -5,7 +5,7 @@ import api from "../utils/api.jsx"
 const fetchPopularMovies=()=>{
     return api.get(`/movie/popular`)
 }
-export const usePopularMoviesQuery = (query) => {
+export const usePopularMoviesQuery = () => {
     return useQuery({
         queryKey:['movie-popular'],
         queryFn:fetchPopularMovies,
