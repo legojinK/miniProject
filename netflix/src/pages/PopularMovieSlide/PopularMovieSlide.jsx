@@ -3,13 +3,14 @@ import {usePopularMoviesQuery} from "../../hooks/usePopularMovies.jsx";
 import {Alert} from "react-bootstrap";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import "./PopularMovieSlide.css";
 import MovieCard from "../Homepage/components/MovieCard/MovieCard.jsx";
 
 const responsive = {
     desktop: {
         breakpoint: { max: 3000, min: 1024 },
         items: 3,
-        slidesToSlide: 7
+        slidesToSlide: 6
     },
     tablet: {
         breakpoint: { max: 1024, min: 464 },
