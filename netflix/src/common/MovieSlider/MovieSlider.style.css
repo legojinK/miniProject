@@ -1,0 +1,12 @@
+.carousel-container {
+    overflow-x: hidden;
+    height: 500px;
+}
+
+@media (min-width: 480px) {
+    .carousel-container{
+        height:330px;
+        display:flex;
+        justify-content: space-between;
+    }
+}
