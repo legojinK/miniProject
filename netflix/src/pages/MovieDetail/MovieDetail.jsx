@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { FaStar, FaHeart, FaPlay } from 'react-icons/fa';
-import {useNavigate, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import { useMovieDetail, useMovieVideos } from "../../hooks/useMovieDetail.jsx";
 import './MovieDetail.css';
+import {Alert} from "react-bootstrap";
 
 const MovieDetail = () => {
     const { id } = useParams();
@@ -11,8 +12,6 @@ const MovieDetail = () => {
     const [isVideoPlaying, setIsVideoPlaying] = useState(false);
     const [showFullOverview, setShowFullOverview] = useState(false);
 
-    if (isLoading || isLoadingVideos) return <h1>Loading...</h1>;
-    if (isError || !videos || videos.length === 0) return <h1>No videos available</h1>;
 
     const handlePlayVideo = (videos) => {
         setIsVideoPlaying(true);
@@ -23,6 +22,12 @@ const MovieDetail = () => {
     const handleToggleOverview = () => {
         setShowFullOverview(!showFullOverview);
     };
+    if(isLoading) {
+        return  <h1>Loading</h1>
+    }
+    if(isError) {
+        return <Alert variant="danger">{error.message}</Alert>
+    }
 
     return (
         <div className="movie-detail-page">
