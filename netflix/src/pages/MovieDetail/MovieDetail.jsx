@@ -4,10 +4,12 @@ import {useParams} from 'react-router-dom';
 import { useMovieDetail, useMovieVideos } from "../../hooks/useMovieDetail.jsx";
 import './MovieDetail.css';
 import {Alert} from "react-bootstrap";
+import RecommendSlide from "../RecommendSlide/RecommendSlide.jsx";
+import Reviews from "../Reviews/Reviews.jsx";
 
 const MovieDetail = () => {
     const { id } = useParams();
-    const { data: movie, isLoading, isError, error } = useMovieDetail({ id });
+    const { data: movie, isLoading, isError, error } = useMovieDetail(id);
     const { data: videos, isLoading: isLoadingVideos } = useMovieVideos({ id });
     const [isVideoPlaying, setIsVideoPlaying] = useState(false);
     const [showFullOverview, setShowFullOverview] = useState(false);
@@ -64,6 +66,9 @@ const MovieDetail = () => {
                     </div>
                 </div>
             </div>
+            <RecommendSlide id={movie.id}/>
+            <Reviews id={movie.id}/>
+
         </div>
     );
 };

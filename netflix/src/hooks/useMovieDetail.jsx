@@ -1,13 +1,13 @@
 import {useQuery} from "@tanstack/react-query";
 import api from "../utils/api.jsx"
 
-const fetchMovieDetail=({id})=>{
-    return api.get(`/movie/${id}`)
+const fetchMovieDetail=async (id)=>{
+    return await api.get(`/movie/${id}`)
 }
-export const useMovieDetail=({id})=>{
+export const useMovieDetail= (id)=>{
     return useQuery({
-        queryKey: ['movie-detail',{id}],
-        queryFn: () => fetchMovieDetail({id} ),
+        queryKey: ['movie-detail',id],
+        queryFn: () => fetchMovieDetail(id),
         select:(result)=>result.data
     })
 }
